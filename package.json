@@ -4,7 +4,7 @@
   "description": "Where teams can share up-to-date log entries at real-time",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha ./test/test-server.js"
   },
   "author": "Edgar Mantes",
   "license": "ISC",
