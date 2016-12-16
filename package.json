@@ -1,0 +1,14 @@
+{
+  "name": "logroom",
+  "version": "1.0.0",
+  "description": "Where teams can share up-to-date log entries at real-time",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edgar Mantes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
