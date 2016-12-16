@@ -38,13 +38,14 @@ if (require.main === module) {
 
 // routes
 app.get('/home', function(req, res) {
-    Item.find(function(err, items) {
+    Item.find(function(err, items) {	
         if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
-        res.json(items);
+        res.send('GET test is good')
+        //res.json(items);
     });
 });
 
