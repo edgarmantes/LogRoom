@@ -42,13 +42,14 @@ var MOCK_STATUS_UPDATES = {
 function getRecentStatusUpdates(callbackFn) {
     // we use a `setTimeout` to make this asynchronous
     // as it would be with a real AJAX call.
+
 	setTimeout(function(){ callbackFn(MOCK_STATUS_UPDATES)}, 1);
 }
 
 // this function stays the same when we connect
 // to real API later
 function displayStatusUpdates(data) {
-    for (index in data.statusUpdates) {
+    for (index in data.entries) {
 	   $('body').append(
         '<p>' + data.entries[index].guestName + ", " +data.entries[index].message + '</p>');
     }
