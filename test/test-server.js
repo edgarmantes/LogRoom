@@ -19,7 +19,7 @@ describe('Log Room', function() {
         });
     });
 
-    it('should recieve data back', function(done) {
+    it('INDEX should recieve data back', function(done) {
         chai.request(app)
             .get('/index')
             .end(function(err, res) {
@@ -29,7 +29,7 @@ describe('Log Room', function() {
             });
     });
 
-    it('should recieve data back', function(done) {
+    it('HOME should recieve data back', function(done) {
         chai.request(app)
             .get('/home')
             .end(function(err, res) {
@@ -39,7 +39,7 @@ describe('Log Room', function() {
             });
     });
 
-    it('should recieve data back', function(done) {
+    it('LOGROOM should recieve data back', function(done) {
         chai.request(app)
             .get('/logroom')
             .end(function(err, res) {

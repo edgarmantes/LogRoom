@@ -49,7 +49,7 @@ app.get('/index', function(req, res) {
 });
 
 app.get('/home', function(req, res) {
-	res.status(200).sendFile(__dirname + '/public/home.html')
+	res.status(200).sendFile(__dirname + '/public/html/home.html')
     // Item.find(function(err, items) {	
     //     if (err) {
     //         return res.status(500).json({
@@ -61,7 +61,7 @@ app.get('/home', function(req, res) {
 });
 
 app.get('/logroom', function(req, res) {
-	res.status(200).sendFile(__dirname + '/public/logroom.html')
+	res.status(200).sendFile(__dirname + '/public/html/logroom.html')
     // Item.find(function(err, items) {	
     //     if (err) {
     //         return res.status(500).json({
