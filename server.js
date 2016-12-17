@@ -37,16 +37,40 @@ if (require.main === module) {
 // end of middleware
 
 // routes
+app.get('/index', function(req, res) {
+	res.status(200).sendFile(__dirname + '/public/index.html')
+    // Item.find(function(err, items) {	
+    //     if (err) {
+    //         return res.status(500).json({
+    //             message: 'Internal Server Error'
+    //         });
+    //     }
+    //     res.status(200).sendFile(__dirname + '/public/index.html')
+});
+
 app.get('/home', function(req, res) {
-    Item.find(function(err, items) {	
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        res.send('GET test is good')
-        //res.json(items);
-    });
+	res.status(200).sendFile(__dirname + '/public/home.html')
+    // Item.find(function(err, items) {	
+    //     if (err) {
+    //         return res.status(500).json({
+    //             message: 'Internal Server Error'
+    //         });
+    //     }
+    //     res.status(200).sendFile(__dirname + '/public/home.html')
+    // });
+});
+
+app.get('/logroom', function(req, res) {
+	res.status(200).sendFile(__dirname + '/public/logroom.html')
+    // Item.find(function(err, items) {	
+    //     if (err) {
+    //         return res.status(500).json({
+    //             message: 'Internal Server Error'
+    //         });
+    //     }
+
+    //     res.status(200).sendFile(__dirname + '/public/logroom.html')
+    // });
 });
 
 app.post('/items', function(req, res) {

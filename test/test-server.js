@@ -21,7 +21,27 @@ describe('Log Room', function() {
 
     it('should recieve data back', function(done) {
         chai.request(app)
+            .get('/index')
+            .end(function(err, res) {
+                should.equal(err, null);
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('should recieve data back', function(done) {
+        chai.request(app)
             .get('/home')
+            .end(function(err, res) {
+                should.equal(err, null);
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('should recieve data back', function(done) {
+        chai.request(app)
+            .get('/logroom')
             .end(function(err, res) {
                 should.equal(err, null);
                 res.should.have.status(200);
