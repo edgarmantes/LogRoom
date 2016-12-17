@@ -50,8 +50,7 @@ function getRecentStatusUpdates(callbackFn) {
 // to real API later
 function displayStatusUpdates(data) {
     for (index in data.entries) {
-	   $('body').append(
-        '<p>' + data.entries[index].guestName + ", " +data.entries[index].message + '</p>');
+	   $('body').append('<p>' + new Date().toUTCString() + " -- " + data.entries[index].guestName.bold() + " -- " + data.entries[index].message + '</p>');
     }
 }
 
