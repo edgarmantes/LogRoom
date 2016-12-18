@@ -11,13 +11,13 @@ var app = server.app;
 chai.use(chaiHttp);
 
 describe('Log Room', function() {
-	before(function(done) {
-        server.runServer(function() {
-            Item.create({name: 'Broad beans'}, function() {
-                done();
-            });
-        });
-    });
+	// before(function(done) {
+ //        server.runServer(function() {
+ //            Item.create({name: 'Broad beans'}, function() {
+ //                done();
+ //            });
+ //        });
+ //    });
 
     it('INDEX should recieve data back', function(done) {
         chai.request(app)
