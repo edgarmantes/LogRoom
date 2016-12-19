@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var Item = require('./models/item');
 
 var config = require('./config');
 
@@ -34,56 +33,56 @@ if (require.main === module) {
         }
     });
 };
+
+exports.app = app;
+exports.runServer = runServer;
+
 // end of middleware
+
+// Models required
+var LogRoom = require('./models/LogRoom');
+var Entries = require('./models/Entries');
 
 // routes
 app.get('/index', function(req, res) {
 	res.status(200).sendFile(__dirname + '/public/index.html')
-    // Item.find(function(err, items) {	
-    //     if (err) {
-    //         return res.status(500).json({
-    //             message: 'Internal Server Error'
-    //         });
-    //     }
-    //     res.status(200).sendFile(__dirname + '/public/index.html')
 });
 
 app.get('/home', function(req, res) {
 	res.status(200).sendFile(__dirname + '/public/html/home.html')
-    // Item.find(function(err, items) {	
-    //     if (err) {
-    //         return res.status(500).json({
-    //             message: 'Internal Server Error'
-    //         });
-    //     }
-    //     res.status(200).sendFile(__dirname + '/public/home.html')
-    // });
 });
 
 app.get('/logroom', function(req, res) {
 	res.status(200).sendFile(__dirname + '/public/html/logroom.html')
-    // Item.find(function(err, items) {	
-    //     if (err) {
-    //         return res.status(500).json({
-    //             message: 'Internal Server Error'
-    //         });
-    //     }
-
-    //     res.status(200).sendFile(__dirname + '/public/logroom.html')
-    // });
 });
 
-app.post('/items', function(req, res) {
-    Item.create({
-        name: req.body.name
-    }, function(err, item) {
+app.post('/logroom', function(req, res) {
+    LogRoom.create({
+	    dateCreated: req.body.dateCreated, 
+	    Id: req.body.Id, 
+	    guestsIdsAccepted: req.body.guestsIdsAccepted,
+	    hostId: req.body.hostId,
+    }, function(err, roomObject) {
         if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
-        res.status(201).json(item);
+        res.status(200).json(roomObject);
     });
+});
+
+app.post('/entries', function(req, res){
+	Entries.create({
+		logEntry: req.body.logEntry
+	}, function(err, object){
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        res.status(200).json(object);
+	});
 });
 
 app.use('*', function(req, res) {
@@ -94,7 +93,3 @@ app.use('*', function(req, res) {
 // end of routes
 
 
-// app.listen(process.env.PORT || 8080);
-
-exports.app = app;
-exports.runServer = runServer;
