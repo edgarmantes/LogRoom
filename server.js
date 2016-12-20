@@ -73,16 +73,47 @@ app.post('/logroom', function(req, res) {
 });
 
 app.post('/entries', function(req, res){
+
 	Entries.create({
 		logEntry: req.body.logEntry
-	}, function(err, object){
-        if (err) {
+	}, function(err, entryObject){
+		if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
-        res.status(200).json(object);
-	});
+        LogRoom.findOneAndUpdate(
+        	{_id: req.body._id}, 
+        	{$push:{'entries': entryObject._id}}, 
+        	function(err, logroom){
+        	    if (err) {
+	            	return res.status(500).json({
+	                message: 'Internal Server Error'
+            });
+        }
+
+        })
+		
+		return res.status(200).json(entryObject)
+	})	
+});
+
+app.put('/entries', function(req, res){
+	Entries.findOneAndUpdate(
+		{_id: req.body.EntriesId}, 
+		{$set:{'logEntry': req.body.logEntry}}, 
+		function(err, entry){
+			return res.status(200).json(entry);
+		})
+});
+
+app.delete('/entries', function(req, res){
+	Entries.findOneAndDelete(
+		{_id: req.body.EntriesId}, 
+		{$set:{'logEntry': req.body.logEntry}}, 
+		function(err, entry){
+			return res.status(200).json(entry);
+		})
 });
 
 app.use('*', function(req, res) {

@@ -9,7 +9,7 @@ var LogRoomSchema = new mongoose.Schema({
     Id: String, 
     guestsIdsAccepted: String,
     hostId: { type: String, required: true },
-    entries: [{ type: Schema.ObjectId, ref: 'Entries' }]
+    entries: [ { type: Schema.Types.ObjectId, ref: 'Entries' } ]
 });
 
 var LogRoom = mongoose.model('LogRoom', LogRoomSchema);
