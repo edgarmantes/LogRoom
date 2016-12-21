@@ -72,6 +72,21 @@ app.post('/logroom', function(req, res) {
     });
 });
 
+app.delete('/logroom', function(req, res){
+	LogRoom.find({_id: req.body._id}).remove().exec(function(err, logrooms){
+		if (err) {
+            	return res.status(500).json({
+                message: 'Internal Server Error'
+            	});
+            } else if (logrooms.length > 0){
+            	return res.status(200).json(logrooms)	
+            } else {
+            	console.log('No documents found')
+            	return res.status(200).json();
+            }
+	});
+});
+
 app.post('/entries', function(req, res){
 
 	Entries.create({

@@ -75,6 +75,19 @@ describe('Log Room', function() {
     //         });
     // });
 
+    it('LOGROOM DELETE should delete the logroom', function(done){
+    	chai.request(app)
+    		.delete('/logroom')
+    		.send({
+    			'_id': '5859ccaca160e933dc62950d'
+    		})
+    		.end(function(err, res){
+    			should.equal(err, null);
+    			res.should.have.status(200);
+    			done();    			
+    		})
+    });
+
     it('ENTRIES POST should receive data back', function(done){
     	chai.request(app)
     		.post('/entries')
