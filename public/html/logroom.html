@@ -1,1 +1,39 @@
-<body>Log Room</body>
+<!doctype html>
+<html lang="eng">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Log Room</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="logIcon" href="logIcon.ico">
+      <link rel="stylesheet" type="text/css" href="../css/style.css">
+      <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+  </head>
+  <body> 
+
+    <div class="container row"> 
+      <div class="header row">
+        <h1 class="col-6">Log Room</h1>
+        <div class="info col-4">
+          <p>Log Room Name: </p>
+          <p>room#:  <span>1234</span></p>
+        </div>
+      </div>
+      <div class="log-container col-12">
+        <ul class="js-entries entries">
+            <li>
+              <time>10:00am</time>
+              <span class="js-name name">John</span>This is the first message. 
+            </li>
+        </ul>
+      </div>
+
+      <form class="js-submit submit col-12">
+        <input class="entry col-12" required>
+        <button class="button-home">HOME</button>
+        <button class="button-submit" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

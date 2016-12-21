@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Clearfix */
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
+}
+
+.col-3, .col-4, .col-6, .col-12 {
+  float: left;
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+}
+
+/* Mobile defaults */
+.col-3, .col-4, .col-6, .col-12 {
+  width: 100%;
+}
+
+@media only screen and (max-width: 640px){
+  .js-submit {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 1px solid black;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .form-container {
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px) {
+  /* 3 columns, 3/12 in % */
+  .col-3 {
+    width: 25%;
+  }
+
+  /* 4 columns */
+  .col-4 {
+    width: 33.33%;
+  }
+
+  /* 6 columns */
+  .col-6 {
+    width: 50%;
+  }
+
+  /* 12 columns */
+  .col-12 {
+/*    width: 100%;*/
+  }
+
+  .submit {
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  
+}
+
+
+/* New Log Room Form */
+
+
+
+.newroom-form {
+  border: 1px solid black;
+  text-align: center;
+}
+
+input {
+  width: 80%;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  height: 30px;
+  test-align: center
+}
+
+::-webkit-input-placeholder {
+  opacity: 0.5;
+  color: red;
+  text-align: center;
+  font-style: italic
+}
+
+button {
+  width: 80%;
+  margin-bottom: 2vh;
+  height: 30px;
+}
+
+
+/* List of LogRooms  */
+
+.rooms-container {
+  border: 1px solid black
+}
+
+.roomcontainer {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+.header, 
+.log-container {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.container {
+  height: 100vh;
+}
+
+.log-container {
+  height: 50%;
+  margin-bottom: 2px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.entries {
+  height: 100%
+}
+
+.entry {
+  margin-top: 2vh;
+  height: 30px  
+}
+
+.submit {
+  text-align: center;
+  height: 15%;
+  background-color: white
+}
+
+.button-submit {
+  height: 25px;
+  margin-top: 8px;
+  width: 80%;
+}
+
+.button-home {
+  height: 25px;
+  margin-top: 8px;
+  width: 18%;
+}
+
+/* log entry */
+ .entries {
+  list-style: none;
+  height: 100%
+}
+
+time {
+  color: red
+}
+
+.name {
+  color: blue;
+  font-style: italic;
+}
+

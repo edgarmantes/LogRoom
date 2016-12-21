@@ -1,1 +1,39 @@
-<body>home page</body>
+<!doctype html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Log Room</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="logIcon" href="logIcon.ico">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    </head>
+    <body>
+        <div class="container row"> 
+            <h1>Home Page</h1>
+            <div class="form-container ">
+              <form class="newroom-form">
+                <input type="text" placeholder="Room Name" required/>
+                <button>New LogRoom</button>
+              </form>
+            </div>
+
+            <div>
+              <h1 class="logrooms-list">LogRooms</h1>
+            </div>
+            <div class="listedrooms ">
+              <a href="#">
+              <div class="rooms-container">
+                <ul class="roomcontainer">
+                  <li>Room Name: {{{#}}}</li>
+                  <li>Room#: {{{#}}}</li>
+                  <li>Date Created: {{{#}}}</li>
+                </ul>
+              </div>
+              </a>
+            </div>
+        </div>        
+    </body>
+</html>

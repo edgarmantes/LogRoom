@@ -44,9 +44,6 @@ var LogRoom = require('./models/LogRoom');
 var Entries = require('./models/Entries');
 
 // routes
-app.get('/index', function(req, res) {
-	res.status(200).sendFile(__dirname + '/public/index.html')
-});
 
 app.get('/home', function(req, res) {
 	res.status(200).sendFile(__dirname + '/public/html/home.html')
