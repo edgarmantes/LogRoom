@@ -98,11 +98,23 @@ describe('Log Room', function() {
     			'EntriesId': '585892264b262e2ae8056dc7'
     		})
     		.end(function(err, res){
-    			console.log('edit test');
+    			should.equal(err, null);
+    			res.should.have.status(200);
     			done();
     		});
 
     });
 
-    it('ENTRIES DELETE should delete entry')
+    it('ENTRIES DELETE should delete entry', function(done){
+    	chai.request(app)
+    		.delete('/entries')
+    		.send({
+    			'EntryId' : '585895783cdb6b32c83bea63'
+    		})
+    		.end(function(err, res){
+    			should.equal(err, null);
+    			res.should.have.status(200);
+    			done();
+    		});
+    });
 });

@@ -89,8 +89,8 @@ app.post('/entries', function(req, res){
         	    if (err) {
 	            	return res.status(500).json({
 	                message: 'Internal Server Error'
-            });
-        }
+	            });
+	        }
 
         })
 		
@@ -108,12 +108,20 @@ app.put('/entries', function(req, res){
 });
 
 app.delete('/entries', function(req, res){
-	Entries.findOneAndDelete(
-		{_id: req.body.EntriesId}, 
-		{$set:{'logEntry': req.body.logEntry}}, 
-		function(err, entry){
-			return res.status(200).json(entry);
-		})
+
+	Entries.find({_id: req.body.EntryId}).remove().exec(function(err, objects){
+		        if (err) {
+	            	return res.status(500).json({
+	                message: 'Internal Server Error'
+	            	});
+	            } else if (objects.length > 0){
+	            	return res.status(200).json(objects)	
+	            } else {
+	            	console.log('No documents found')
+	            	return res.status(200).json();
+	            }
+	});
+
 });
 
 app.use('*', function(req, res) {
@@ -122,5 +130,3 @@ app.use('*', function(req, res) {
     });
 });
 // end of routes
-
-
