@@ -64,7 +64,7 @@ function getAndDisplayStatusUpdates() {
 var initial = function(){
     $('.js-logroom').submit(function(event){
         event.preventDefault();
-        var ajax = $.ajax('/logroom', function(){})
+        var ajax = $.ajax('/logroom', function(object){})
     });
 };
 

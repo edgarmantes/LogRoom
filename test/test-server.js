@@ -19,7 +19,7 @@ describe('Log Room', function() {
 
     it('INDEX should recieve data back', function(done) {
         chai.request(app)
-            .get('/index')
+            .get('/')
             .end(function(err, res) {
                 should.equal(err, null);
                 res.should.have.status(200);
@@ -76,9 +76,6 @@ describe('Log Room', function() {
                 res.body.entries.should.be.a('array');
                 res.body.dateCreated.should.be.a('string');
                 res.body._id.should.be.a('string');
-                LogRoom.find(function(err, logroom){
-                	logroom.
-                });
 
                 done();
             });
