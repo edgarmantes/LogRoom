@@ -149,17 +149,20 @@ app.delete('/logroom', function(req, res){
 });
 
 app.post('/entries', function(req, res){
-	console.log('Inside POST')
+    // console.log(req.body)
 	Entries.create({
-		logEntry: req.body.entry
+		logEntry: req.body.logEntry,
+        datePublished: req.body.datePublished,
+        logRoomId: req.body.logRoomId
 	}, function(err, entryObject){
+        console.log(entryObject)
 		if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
         LogRoom.findOneAndUpdate(
-        	{_id: req.body._id}, 
+        	{_id: entryObject.logRoomId}, 
         	{$push:{'entries': entryObject._id}}, 
         	function(err, logroom){
         	    if (err) {

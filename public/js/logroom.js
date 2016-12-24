@@ -1,8 +1,15 @@
-	var parsehref = location.href.split('/');
-	var logRoomId = parsehref[4]
+var parsehref = location.href.split('/');
+var logRoomId = parsehref[4]
+var userId = null;
+
+var d = new Date();
+var month = d.getMonth() + 1;
+var day = d.getDate();
+var hours = d.getHours();
+var minutes = d.getMinutes();
+var timeDate = month + '/' + day + ' - ' + hours + ':' + minutes;
 
 var submitAndGetEntry = function(){
-	console.log('inside first func')
 	var entered = $('.entry').val();
 	submitEntry(entered);
 	$('.entry').val('');
@@ -11,8 +18,9 @@ var submitAndGetEntry = function(){
 var submitEntry = function(entry){
 
 	var logged = {
-		'entry': entry,
-		'_id': logRoomId
+		'logEntry': entry,
+		'logRoomId': logRoomId,
+		'datePublished': timeDate
 	};
 	var ajax = $.ajax('/entries', {
 		type: 'POST',
@@ -20,7 +28,8 @@ var submitEntry = function(entry){
 		dataType: 'json',
 		contentType: 'application/json'
 	}).done(function(data){
-		console.log('got back data')
+	    var listTag = $('<li></li><br>').html(data.datePublished + " - " + data.logEntry);
+        $('.js-entries').append(listTag);
 	});
 
 };
@@ -29,19 +38,24 @@ var submitEntry = function(entry){
 function getAndDisplayStatusUpdates() {
 	var parsehref = location.href.split('/');
 	var logRoomId = parsehref[4]
-	console.log(logRoomId)
     var ajax = $.ajax('/logroom/' + logRoomId + '/json', {
         type: 'GET', 
         dataType: 'json'
     }).done(function(data){
-    	console.log(data)
+    	userId = data.hostId
+    	$('.roomname').html(data.roomName);
+    	$('.roomnumber').html(data._id);
         var entries = data.entries.forEach(function(entry){
-        	console.log()
-            $('.js-entries').append(entry.logEntry + '<br>');
+        	var listTag = $('<li></li><br>').html(entry.datePublished + " - " + entry.logEntry);
+            $('.js-entries').append(listTag);
         })
+        addLogRoomNumToHomeButton();
     })
 }
 
+var addLogRoomNumToHomeButton = function(){
+	$('.homebutton').attr('action', '/home/' + userId);
+};
 
 
 $(document).ready(function(){
@@ -51,6 +65,8 @@ $(document).ready(function(){
 		event.preventDefault();
 		submitAndGetEntry();
 	})
+
+
 
 
 });

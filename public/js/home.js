@@ -38,9 +38,9 @@ var renderEachLogRoomInfo = function(data){
 	var link = $('<a>').attr('href', '/logroom/' + data._id);
 	var roomContainer = $('<div>').attr('class', 'rooms-container');
 	var unList = $('<ul>').attr('class', 'roomcontainer');
-	var listName = $('<li>').html('Room Name: ' + data.roomName);
-	var roomNum = $('<li>').html('Room Number: ' + data._id);
-	var date = $('<li>').html('Date Created: ' + data.dateCreated);
+	var listName = $('<li>').html('<strong>Room Name:</strong> ' + data.roomName);
+	var roomNum = $('<li>').html('&nbsp - <strong>Room Number:</strong> ' + data._id);
+	var date = $('<li>').html('&nbsp - <strong>Date Created:</strong> ' + data.dateCreated);
 	var UL = unList.append(listName).append(roomNum).append(date);
 	var divCon = roomContainer.append(UL);
 	var logRoomTag = link.append(divCon); 
@@ -64,21 +64,6 @@ var createLogRoom = function(){
 		console.log(data)
 	});
 };
-
-
-
-
-
-// var fake = function(){
-// 	var username = 'esmantes';
-// 	var ajax = $.ajax('/user', {
-// 		type: 'POST',
-// 		dataType: 'json',
-// 		data: username
-// 	}).done(function(data){
-// 		console.log('user created')
-// 	})
-// };
 
 
 
