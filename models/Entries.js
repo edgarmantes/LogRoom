@@ -1,10 +1,8 @@
 var mongoose = require('mongoose');
 
 var EntriesSchema = new mongoose.Schema({
-	// _id: ##;
 	// guestName: { type: String, require: true },
-	// guestId: Number,
-	// datePublished: Number,
+	// datePublished: datePublished,
 	logEntry: { type: String, require: true }
 
 });

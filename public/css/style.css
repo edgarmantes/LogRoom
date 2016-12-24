@@ -32,7 +32,7 @@
 }
 
 @media only screen and (max-width: 640px){
-  .js-submit {
+  .submit {
     position: fixed;
     left: 0;
     right: 0;
@@ -113,7 +113,8 @@ button {
 /* List of LogRooms  */
 
 .rooms-container {
-  border: 1px solid black
+  border: 1px solid black;
+  margin-bottom: 20px;
 }
 
 .roomcontainer {
@@ -135,17 +136,13 @@ li {
 }
 
 .log-container {
-  height: 50%;
+  height: 60%;
   margin-bottom: 2px;
 }
 
 .header {
   text-align: center;
   margin-bottom: 2px;
-}
-
-.entries {
-  height: 100%
 }
 
 .entry {
@@ -155,7 +152,7 @@ li {
 
 .submit {
   text-align: center;
-  height: 15%;
+  height: 25%;
   background-color: white
 }
 
@@ -174,7 +171,8 @@ li {
 /* log entry */
  .entries {
   list-style: none;
-  height: 100%
+  height: 95%;
+  overflow: auto;
 }
 
 time {

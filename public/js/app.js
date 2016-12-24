@@ -39,11 +39,19 @@
 // timeout function that returns mock data, it will
 // use jQuery's AJAX functionality to make a call
 // to the server and then run the callbackFn
-function getRecentStatusUpdates(callbackFn) {
-    // we use a `setTimeout` to make this asynchronous
-    // as it would be with a real AJAX call.
-	setTimeout(function(){ callbackFn(MOCK_STATUS_UPDATES)}, 1);
+var db = "585730b3f5a1e91878d36ab1"
 
+function getRecentStatusUpdates(callbackFn) {
+    var ajax = $.ajax('/logroom/' + db, {
+        type: 'GET', 
+        dataType: 'json'
+    }).done(function(data){
+        console.log(data);
+        var entries = data.entries.forEach(function(entry){
+            console.log(entry.logEntry)
+            $('.js-entries').append(entry.logEntry + '<br>');
+        })
+    })
 }
 
 // this function stays the same when we connect
@@ -64,7 +72,16 @@ function getAndDisplayStatusUpdates() {
 var initial = function(){
     $('.js-logroom').submit(function(event){
         event.preventDefault();
-        var ajax = $.ajax('/logroom', function(object){})
+        var ajax = $.ajax('/home', {
+            method: 'GET',
+            url: '/home',
+            dataType: 'html'
+        })
+    });
+
+    $('.getentries').on('click', function(event){
+        event.preventDefault();
+        getAndDisplayStatusUpdates();
     });
 };
 

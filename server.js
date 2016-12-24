@@ -42,22 +42,57 @@ exports.runServer = runServer;
 // Models required
 var LogRoom = require('./models/LogRoom');
 var Entries = require('./models/Entries');
+var User = require('./models/User');
 
 // routes
 
-app.get('/home', function(req, res) {
-	res.status(200).sendFile(__dirname + '/public/html/home.html')
+app.get('/user', function(req, res){
+	res.status(200).sendFile(__dirname + '/public/html/user.html');
+})
+
+app.get('/user/:id', function(req, res){
+	User.findById(req.params.id, function(err, user){
+		if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        res.status(200).json(user.logroomIds);
+		
+	})
+})
+
+app.post('/user', function(req, res){
+	User.create({
+		username: req.body.username,
+		logroomIds: [],
+	}, function(err, object){
+		    if (err) {
+            	return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        res.status(200).json(object);
+	})
 });
 
-app.get('/logroom', function(req, res) {
-	res.status(200).sendFile(__dirname + '/public/html/logroom.html')
+app.get('/home/:id', function(req, res) {
+	res.status(200).sendFile(__dirname + '/public/html/home.html')
+
 });
+
+
+// app.get('/home/:id', function(req, res) {
+// 	User.findById(req.params.id, function(err, data){
+// 		console.log(data);
+// 	})
+// });
 
 app.post('/logroom', function(req, res) {
+	console.log('Inside POST logroom')
     LogRoom.create({
 	    dateCreated: req.body.dateCreated, 
-	    Id: req.body.Id, 
-	    guestsIdsAccepted: req.body.guestsIdsAccepted,
+	    roomName: req.body.roomName, 
 	    hostId: req.body.hostId,
     }, function(err, roomObject) {
         if (err) {
@@ -65,9 +100,38 @@ app.post('/logroom', function(req, res) {
                 message: 'Internal Server Error'
             });
         }
+        console.log(roomObject)
+        User.findOneAndUpdate(
+        	{_id: roomObject.hostId}, 
+        	{$push:{'logroomIds': roomObject._id}},
+        	function(err, object){
+        		if(err){
+        			return res.status(500).json({
+	                message: 'Internal Server Error'
+	            	})
+        		}
+        	}
+        );
+
         res.status(200).json(roomObject);
     });
 });
+
+// populates the Entries of LogRoom model in the HOME Page
+app.get('/logroom/:id/json', function(req, res) {
+	var logroomObject = LogRoom.findById(req.params.id)
+	.populate('entries')
+	.exec(function(err, data){
+		res.status(200).json(data);
+	});
+})
+
+app.get('/logroom/:id', function(req, res) {
+	res.status(200).sendFile(__dirname + '/public/html/logroom.html')
+});
+
+
+
 
 app.delete('/logroom', function(req, res){
 	LogRoom.find({_id: req.body._id}).remove().exec(function(err, logrooms){
@@ -85,9 +149,9 @@ app.delete('/logroom', function(req, res){
 });
 
 app.post('/entries', function(req, res){
-
+	console.log('Inside POST')
 	Entries.create({
-		logEntry: req.body.logEntry
+		logEntry: req.body.entry
 	}, function(err, entryObject){
 		if (err) {
             return res.status(500).json({

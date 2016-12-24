@@ -4,10 +4,8 @@ var mongoose = require('mongoose')
 var Entries = require('./Entries')
 
 var LogRoomSchema = new mongoose.Schema({
-		// _id : ##
     dateCreated: { type: String, required: true },
-    Id: String, 
-    guestsIdsAccepted: String,
+    roomName: String, 
     hostId: { type: String, required: true },
     entries: [ { type: Schema.Types.ObjectId, ref: 'Entries' } ]
 });
