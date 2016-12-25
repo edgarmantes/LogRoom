@@ -1,4 +1,4 @@
-var urlIds = location.href.split('/');
+var urlIds = location.href.replace('?', '').split('/');
 var userId = urlIds[4];
 
 var d = new Date();
@@ -75,4 +75,6 @@ $(document).ready(function(){
 		event.preventDefault();
 		createLogRoom();
 	});
+
+	console.log(urlIds)
 })

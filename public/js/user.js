@@ -3,7 +3,7 @@
 var getLogRoomIdsAndRenderList = function(data){
 	var ajax = $.ajax('/home/' + data, {
 		type: 'GET',
-		url: '/home/' + data
+
 	}).done(function(page){ 
 		$('.hide').attr('action', '/home/' + data);
 		$('.hideB').trigger('click');

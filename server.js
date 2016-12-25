@@ -256,7 +256,7 @@ app.post('/logroom', function(req, res) {
         	{_id: roomObject.hostId}, 
         	{$push:{'logroomIds': roomObject._id}},
         	function(err, object){
-                console.log(object + "OKKKKK")
+
         		if(err){
         			return res.status(500).json({
 	                message: 'Internal Server Error'
