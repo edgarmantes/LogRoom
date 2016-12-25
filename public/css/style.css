@@ -83,8 +83,9 @@
 
 
 
+
+
 .newroom-form {
-  border: 1px solid black;
   text-align: center;
 }
 
@@ -93,11 +94,11 @@ input {
   margin-top: 2vh;
   margin-bottom: 2vh;
   height: 30px;
-  test-align: center
+  text-align: center
 }
 
 ::-webkit-input-placeholder {
-  opacity: 0.5;
+  opacity: 0.3;
   color: red;
   text-align: center;
   font-style: italic
@@ -113,8 +114,11 @@ button {
 /* List of LogRooms  */
 
 .rooms-container {
-  border: 1px solid black;
+  border: 1px solid white;
   margin-bottom: 20px;
+  background-color: white;
+  box-shadow: -10px 10px 30px #888888;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .roomcontainer {
@@ -134,6 +138,7 @@ li {
 .container {
   height: 100vh;
 }
+
 
 .log-container {
   height: 60%;
@@ -156,11 +161,7 @@ li {
   background-color: white
 }
 
-.button-submit {
-  height: 25px;
-  margin-top: 8px;
-  width: 80%;
-}
+
 
 .button-home {
   height: 25px;
@@ -188,3 +189,67 @@ time {
   display: none;
 }
 
+.heading {
+  text-align: center;
+}
+
+/*Sign Up/In Page*/
+
+.border {
+  box-shadow: -10px 10px 70px #888888;
+  background-color: white;
+}
+
+.signup, .signin {
+  text-align: center;
+
+}
+
+.input {
+  border: none;
+  box-shadow: 1px 1px 15px 2px rgb(242, 242, 242) inset;
+  height: 40px;
+  font-size: 25px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.paddingtop25px {
+  padding-top: 25px;
+}
+
+.paddingbottom25px {
+  padding-bottom: 30px;
+}
+
+.contained {
+   margin-top: 10vh;
+}
+
+.greenback {
+  background-color: rgb(66, 244, 119);
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Homemade Apple', cursive;
+}
+
+button, .button {
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+}
+
+.ent {
+  font-family: 'Patrick Hand', cursive;
+
+}
+
+.signout {
+  width: 35%;
+}
+
+/*font-family: 'Homemade Apple', cursive;
+font-family: 'Patrick Hand', cursive;*/

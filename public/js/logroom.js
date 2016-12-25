@@ -1,4 +1,4 @@
-var parsehref = location.href.split('/');
+var parsehref = location.href.replace('?', '').split('/');
 var logRoomId = parsehref[4]
 var userId = null;
 
@@ -28,7 +28,7 @@ var submitEntry = function(entry){
 		dataType: 'json',
 		contentType: 'application/json'
 	}).done(function(data){
-	    var listTag = $('<li></li><br>').html(data.datePublished + " - " + data.logEntry);
+	    var listTag = $('<li></li><br>').html(data.datePublished + " - " + data.logEntry).attr('class', 'ent');
         $('.js-entries').append(listTag);
 	});
 
@@ -46,7 +46,7 @@ function getAndDisplayStatusUpdates() {
     	$('.roomname').html(data.roomName);
     	$('.roomnumber').html(data._id);
         var entries = data.entries.forEach(function(entry){
-        	var listTag = $('<li></li><br>').html(entry.datePublished + " - " + entry.logEntry);
+        	var listTag = $('<li></li><br>').html(entry.datePublished + " - " + entry.logEntry).attr('class', 'ent');
             $('.js-entries').append(listTag);
         })
         addLogRoomNumToHomeButton();
