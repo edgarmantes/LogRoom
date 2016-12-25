@@ -1,17 +1,19 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
 var config = require('./config');
-
+var passport = require('passport');
+var BasicStrategy = require('passport-http').BasicStrategy;
+var jsonParser = bodyParser.json();
 var app = express();
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(passport.initialize());
 
-var passport = require('passport');
-var BasicStrategy = require('passport-http').BasicStrategy;
+
 
 
 // middleware
@@ -99,101 +101,116 @@ app.get('/user/:id', function(req, res){
 })
 
 app.post('/users', jsonParser, function(req, res) {
-    if (!req.body) {
-        return res.status(400).json({
-            message: "No request body"
-        });
-    }
-
-    if (!('username' in req.body)) {
-        return res.status(422).json({
-            message: 'Missing field: username'
-        });
-    }
-
-    var username = req.body.username;
-
-    if (typeof username !== 'string') {
-        return res.status(422).json({
-            message: 'Incorrect field type: username'
-        });
-    }
-
-    username = username.trim();
-
-    if (username === '') {
-        return res.status(422).json({
-            message: 'Incorrect field length: username'
-        });
-    }
-
-    if (!('password' in req.body)) {
-        return res.status(422).json({
-            message: 'Missing field: password'
-        });
-    }
-
-    var password = req.body.password;
-
-    if (typeof password !== 'string') {
-        return res.status(422).json({
-            message: 'Incorrect field type: password'
-        });
-    }
-
-    password = password.trim();
-
-    if (password === '') {
-        return res.status(422).json({
-            message: 'Incorrect field length: password'
-        });
-    }
-
-    var user = new User({
-        username: username,
-        password: password,
-    });
-
-    user.save(function(err) {
+    User.findOne({username: req.body.usernameup}, function(err, user){
         if (err) {
             return res.status(500).json({
                 message: 'Internal server error'
             });
         }
 
-        return res.status(201).json({});
-    });
-
-    bcrypt.genSalt(10, function(err, salt) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal server error'
+        if (user !== null){
+            return res.status(422).json({
+                message: 'Username taken: Please choose another username'
             });
         }
 
-        bcrypt.hash(password, salt, function(err, hash) {
+        if (!req.body) {
+            return res.status(400).json({
+                message: "No request body"
+            });
+        }
+
+        if (!('usernameup' in req.body)) {
+            return res.status(422).json({
+                message: 'Missing field: username'
+            });
+        }
+
+        var username = req.body.usernameup;
+
+        if (typeof username !== 'string') {
+            return res.status(421).json({
+                message: 'Incorrect field type: username'
+            });
+        }
+
+        username = username.trim();
+
+        if (username === '') {
+            return res.status(422).json({
+                message: 'Incorrect field length: username'
+            });
+        }
+
+        if (!('passwordup' in req.body)) {
+            return res.status(423).json({
+                message: 'Missing field: password'
+            });
+        }
+
+        var password = req.body.passwordup;
+
+        if (typeof password !== 'string') {
+            return res.status(424).json({
+                message: 'Incorrect field type: password'
+            });
+        }
+
+        password = password.trim();
+
+        if (password === '') {
+            return res.status(425).json({
+                message: 'Incorrect field length: password'
+            });
+        }
+
+        var userId = null;
+
+        bcrypt.genSalt(10, function(err, salt) {
             if (err) {
                 return res.status(500).json({
                     message: 'Internal server error'
                 });
             }
 
-            var user = new User({
-                username: username,
-                password: hash
-            });
-
-            user.save(function(err) {
+            bcrypt.hash(password, salt, function(err, hash) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Internal server error'
                     });
                 }
 
-                return res.status(201).json({});
+                var user = new User({
+                    username: username,
+                    password: hash
+                });
+
+                user.save(function(err, user) {
+
+                    if (err) {
+                        return res.status(500).json({
+                            message: 'Internal server error'
+                        });
+                    }
+                    userId = user._id;
+                    return res.status(201).json(userId);
+                });
             });
         });
-    });
+
+        // res.status(200).json({});
+    })   
+});
+
+app.post('/users/signin', jsonParser, function(req, res){
+
+    User.findOne({username: req.body.usernamein}, function(err, object){
+
+        object.validatePassword(req.body.passwordin, function(err, result){
+            res.status(201).json(object._id);
+        })
+    })
+
 });
 
 app.get('/hidden', passport.authenticate('basic', {session: false}), function(req, res) {
@@ -222,12 +239,6 @@ app.get('/home/:id', function(req, res) {
 });
 
 
-// app.get('/home/:id', function(req, res) {
-// 	User.findById(req.params.id, function(err, data){
-// 		console.log(data);
-// 	})
-// });
-
 app.post('/logroom', function(req, res) {
 	console.log('Inside POST logroom')
     LogRoom.create({
@@ -240,17 +251,19 @@ app.post('/logroom', function(req, res) {
                 message: 'Internal Server Error'
             });
         }
-        console.log(roomObject)
+
         User.findOneAndUpdate(
         	{_id: roomObject.hostId}, 
         	{$push:{'logroomIds': roomObject._id}},
         	function(err, object){
+                console.log(object + "OKKKKK")
         		if(err){
         			return res.status(500).json({
 	                message: 'Internal Server Error'
 	            	})
         		}
         	}
+
         );
 
         res.status(200).json(roomObject);
@@ -289,13 +302,13 @@ app.delete('/logroom', function(req, res){
 });
 
 app.post('/entries', function(req, res){
-    // console.log(req.body)
+
 	Entries.create({
 		logEntry: req.body.logEntry,
         datePublished: req.body.datePublished,
         logRoomId: req.body.logRoomId
 	}, function(err, entryObject){
-        console.log(entryObject)
+
 		if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'

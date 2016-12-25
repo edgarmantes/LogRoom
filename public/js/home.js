@@ -61,7 +61,8 @@ var createLogRoom = function(){
 		dataType: 'json',
 		contentType: 'application/json'
 	}).done(function(data){
-		console.log(data)
+		renderEachLogRoomInfo(data);
+		$('.newLogName').val('');
 	});
 };
 
@@ -69,7 +70,7 @@ var createLogRoom = function(){
 
 $(document).ready(function(){
 	getLogRoomIds();
-	//createLogRoom();
+
 	$('.newroom-form').on('submit', function(event){
 		event.preventDefault();
 		createLogRoom();
