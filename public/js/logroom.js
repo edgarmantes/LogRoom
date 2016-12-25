@@ -1,4 +1,4 @@
-var parsehref = location.href.split('/').replace('?', ' ');
+var parsehref = location.href.replace('?', '').split('/');
 var logRoomId = parsehref[4]
 var userId = null;
 
