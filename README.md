@@ -5,7 +5,7 @@ https://ancient-beyond-11469.herokuapp.com/
 
 ### Introduction
 When working with a team of people on procedural projects, peoples work may be held up if certain aspects of the job has not been completed.
-You would need to ensure that certain critical steps have been done before continuing work. Getting a hold of that person who may have coompleted
+You would need to ensure that certain critical steps have been done before continuing work. Getting a hold of that person who may have completed
 that step may be time consuming and irritating. Log Room provides a centralized area where completed tasks can be logged and time stamped to 
 inform all who are logged in to know the status of certain events. There would be no more guessing on 'if' it has been completed. Each team 
 member will be certain that it has been completed. 
