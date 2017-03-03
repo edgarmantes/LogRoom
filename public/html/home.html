@@ -8,37 +8,30 @@
 
         <link rel="logIcon" href="logIcon.ico">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Patrick+Hand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alice|Crete+Round|Homemade+Apple|Istok+Web|Nobile|Source+Code+Pro|Unica+One" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     </head>
     <body class="greenback">
-        <div class="container row"> 
+        <div class="row"> 
             <h1 class="heading">Home Page</h1>
             <form class="heading" action="/">
-              <button class="js-signout signout">sign out</button>
+              <button class="js-signout signout">sign out<img class="img-out" src="../images/logout.png"></button>
             </form>
-            <div class="form-container border paddingtop25px">
+            <div class="form-container border">
               <form class="newroom-form">
-                <input class="newLogName input" type="text" placeholder="Room Name" required/>
-                <button class="greenback" type="submit">New LogRoom</button>
+                <fieldset>
+                  <divc class="newproject-container">
+                    <label class="create-label">Create New Room</label>
+                    <input class="newLogName input" type="text" placeholder="Room Name" required/
+                    ><button class="greenback btn-logroom" type="submit"></button>
+                  </div>
+                </fieldset>
               </form>
-
             </div>
-
             <div>
               <h1 class="logrooms-list">LogRooms</h1>
             </div>
-            <div class="listedrooms ">
-              <!-- <a href="#">
-              <div class="rooms-container">
-                <ul class="roomcontainer">
-                  <li>Room Name: {{{Name}}}</li>
-                  <li>Room#: 585730b3f5a1e91878d36ab1</li>
-                  <li>Date Created: 123456789</li>
-                </ul>
-              </div>
-              </a> -->
-            </div>
+            <div class="listedrooms row"></div>
         </div>
         <script type="text/javascript" src="../js/home.js"></script>        
     </body>

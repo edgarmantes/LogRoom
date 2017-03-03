@@ -59,12 +59,17 @@ var addLogRoomNumToHomeButton = function(){
 
 
 $(document).ready(function(){
+
 	getAndDisplayStatusUpdates();
 
 	$('.js-submit').on('click', '.button-submit', function(event){
 		event.preventDefault();
 		submitAndGetEntry();
 	})
+
+	$('.js-home').on('click', function(event){
+		window.location.replace("/home/" + userId);
+	});
 
 
 

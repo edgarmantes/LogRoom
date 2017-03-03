@@ -101,6 +101,7 @@ app.get('/user/:id', function(req, res){
 })
 
 app.post('/users', jsonParser, function(req, res) {
+    console.log(104, req.body)
     User.findOne({username: req.body.usernameup}, function(err, user){
         if (err) {
             return res.status(500).json({
@@ -203,10 +204,11 @@ app.post('/users', jsonParser, function(req, res) {
 });
 
 app.post('/users/signin', jsonParser, function(req, res){
-
+    console.log(207,'testing')
     User.findOne({username: req.body.usernamein}, function(err, object){
-
+        console.log(209, err, object)
         object.validatePassword(req.body.passwordin, function(err, result){
+            console.log(211, err, result)
             res.status(201).json(object._id);
         })
     })
@@ -231,6 +233,14 @@ app.post('/user', function(req, res){
         }
         res.status(200).json(object);
 	})
+});
+
+app.get('/signin', function(req, res){
+    res.status(200).sendFile(__dirname + '/public/html/signIn.html')
+});
+
+app.get('/signup', function(req, res){
+    res.status(200).sendFile(__dirname + '/public/html/signUp.html')
 });
 
 app.get('/home/:id', function(req, res) {

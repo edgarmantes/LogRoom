@@ -22,6 +22,7 @@ var signUp = function(){
 		dataType: 'json',
 		contentType: 'application/json'
 	}).done(function(data){
+		console.log(25, 'user.js', data)
 		getLogRoomIdsAndRenderList(data)
 	})
 };
@@ -30,6 +31,21 @@ var signIn = function(){
 	var signin = {
 		'usernamein': $('.usernamein').val(),
 		'passwordin': $('.passwordin').val()
+	}
+	var ajax = $.ajax('/users/signin', {
+		type: 'POST',
+		data: JSON.stringify(signin),
+		dataType: 'json',
+		contentType: 'application/json'
+	}).done(function(data){
+		getLogRoomIdsAndRenderList(data);
+	})
+};
+
+var demoSignIn = function(){
+	var signin = {
+		'usernamein': "demo",
+		'passwordin': "123"
 	}
 	var ajax = $.ajax('/users/signin', {
 		type: 'POST',
@@ -50,6 +66,11 @@ $(document).ready(function(){
 	$('.js-signin').on('submit', function(event){
 		event.preventDefault();
 		signIn();
+	});
+
+	$('.demo-btn').on('click', function(event){
+		event.preventDefault();
+		demoSignIn();
 	});
 
 });

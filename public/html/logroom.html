@@ -14,25 +14,24 @@
 
     <div class="container row"> 
       <div class="header row border">
-        <h1 class="col-6">Log Room</h1>
-        <div class="info col-4">
-          <p class="ent"><strong>Log Room Name:</strong> <span class="roomname"></span> </p>
+        <h1 class="col-6"><span class="roomname"></span></h1>
+        <div class="info roomNum col-4">
           <p class="ent"><strong>room#:</strong>  <span class="roomnumber"></span></p>
+        </div>
+        <div class="col-12">       
+          <input class="js-home homeb button greenback" type="submit" value="Home">
         </div>
       </div>
       <div class="log-container col-12 border">
         <ul class="js-entries entries">
 
         </ul>
-      </div>
-      <div class="submit col-12">
-        <form class="js-submit col-12">
-          <input class="entry col-12 input" placeholder="enter log entry here" required>
-          <button class="button-submit greenback" type="submit">Submit</button>
-        </form>  
-        <form class="homebutton">      
-          <input class="homeb button greenback" type="submit" value="Back to Home">
-        </form>
+        <form class="js-submit entry-form col-12">
+          <div class="entry-container">
+            <input class="entry col-12 input" placeholder="enter log entry here" required
+            ><button class="button-submit greenback" type="submit">Enter</button>
+          </div>
+        </form>        
       </div>
     </div>
 

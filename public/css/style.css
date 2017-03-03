@@ -1,5 +1,23 @@
+/*font-family: 'Source Code Pro', monospace;
+font-family: 'Crete Round', serif;
+font-family: 'Istok Web', sans-serif;
+font-family: 'Alice', serif;
+font-family: 'Nobile', sans-serif;
+font-family: 'Unica One', cursive;
+font-family: 'Homemade Apple', cursive;*/
+
+
 * {
   box-sizing: border-box;
+  font-family: 'Crete Round', serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
 }
 
 .row {
@@ -30,6 +48,253 @@
 .col-3, .col-4, .col-6, .col-12 {
   width: 100%;
 }
+
+
+/**/
+
+
+.sub {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.newroom-form {
+  text-align: center;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+input {
+  width: 80%;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  height: 30px;
+  text-align: center
+}
+
+::-webkit-input-placeholder {
+  opacity: 0.3;
+  color: red;
+  text-align: center;
+  font-style: italic
+}
+
+
+/* List of LogRooms  */
+
+.rooms-container {
+  border: 1px solid white;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.roomcontainer {
+  list-style: none;
+  color: rgb(0,0,0);
+}
+
+li {
+  display: inline-block;
+}
+
+.header, 
+.log-container {
+  border: 1px solid black;
+}
+
+
+.log-container {
+  height: 75%;
+}
+
+.header {
+  text-align: center;
+}
+
+.entry {
+  margin-top: 10px;
+  height: 30px  
+}
+
+.submit {
+  text-align: center;
+  height: 25%;
+  background-color: white
+}
+
+.homeb:hover {
+  cursor: pointer;
+} 
+
+.button-home {
+  height: 25px;
+  margin-top: 8px;
+  width: 18%;
+}
+
+
+/* log entry */
+ .entries {
+  list-style: none;
+  height: 80%;
+  overflow: auto;
+}
+
+.entry-form {
+  text-align: center;
+}
+
+.time {
+  color: red
+}
+
+.name {
+  color: blue;
+  font-style: italic;
+}
+
+.hidden {
+  display: none;
+}
+
+.heading {
+  text-align: center;
+}
+
+/*Sign Up/In Page*/
+
+.border {
+
+  background-color: white;
+}
+
+.signup, .signin {
+  text-align: center;
+}
+
+.hd {
+  margin-bottom: 0px;
+}
+
+.input {
+  border: none;
+  box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2) inset;
+  height: 40px;
+  font-size: 17px;
+}
+
+.paddingtop25px {
+  padding-top: 25px;
+}
+
+.paddingbottom25px {
+  padding-bottom: 30px;
+}
+
+.contained {
+   margin-top: 10vh;
+}
+
+.greenback {
+  background-color: rgba(66, 244, 119, 0.6);
+}
+
+.btn-logroom {
+  display: inline-block;
+  width: 15%;
+  margin: 2vh 0;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-image: url(../images/arrow-right.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-logroom:hover {
+  cursor: pointer;
+  background-color: rgba(66, 244, 119, 1.0);
+}
+
+.newLogName {
+  width: 75%;
+  vertical-align: top;
+  border-radius: 5px 0 0 5px;
+}
+
+.container {
+  height: 95vh;
+}
+
+h1 {
+  font-size: 45px;
+  font-family: 'Homemade Apple', cursive;
+}
+
+button, .button {
+  width: 50%;
+  height: 40px;
+  font-size: 25px;
+}
+
+.logrooms-list {
+  text-align: center;
+}
+
+.ent {
+
+}
+
+.create-label {
+  display: block;
+  margin-top: 10px;
+}
+
+.homeb {
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+}
+
+.signout {
+  width: 30%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 0;
+}
+
+.roomNum {
+  margin-top: 4%
+}
+
+.entry-container {
+  display: inline-block;
+  width: 84%;
+}
+
+.img-clip {
+  height: 200px;
+  margin: 45% 0;
+}
+
+.img-btn {
+  height: 100%;
+  text-align: center;
+}
+
+.down {
+  position: absolute;
+  bottom: 0;
+  left: 46%;
+}
+
+.buttons {
+  margin-bottom: 15px;
+}
+
+.call-header {
+  margin-top: 60px;
+}
+
 
 @media only screen and (max-width: 640px){
   .submit {
@@ -68,12 +333,74 @@
 
   /* 12 columns */
   .col-12 {
-/*    width: 100%;*/
+  /*    width: 100%;*/
+  }
+
+  .down {
+    display: none;
   }
 
   .submit {
     border: 1px solid black;
-    border-radius: 10px;
+  }
+
+  .entry {
+    display: inline-block;
+    width: 80%;
+    border-radius: 5px 0 0 5px;
+    height: 60px;
+  }
+
+  .button-submit {
+    height: 60px;
+    width: 20%;
+    margin: 10px 0;
+    border-radius: 0 5px 5px 0;
+    border: none;
+  }
+
+  .signout {
+    font-size: 20px;
+  }
+
+  .signin,
+  .signup {
+    margin: 0 25%;
+  }
+
+  .img-out {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  .img-clip {
+    margin: 15% 13%;
+  }
+
+  .call-to {
+    margin-top: 5%;
+  }
+
+  .call-in {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .call-up {
+    border-radius: 0 5px 5px 0;
+  }
+
+  .call-header {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .call-description {
+    margin: 10% 0;
+  }
+
+  .call-p {
+    line-height: 25px;
+    text-align: center;
   }
   
 }
@@ -85,171 +412,5 @@
 
 
 
-.newroom-form {
-  text-align: center;
-}
-
-input {
-  width: 80%;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  height: 30px;
-  text-align: center
-}
-
-::-webkit-input-placeholder {
-  opacity: 0.3;
-  color: red;
-  text-align: center;
-  font-style: italic
-}
-
-button {
-  width: 80%;
-  margin-bottom: 2vh;
-  height: 30px;
-}
-
-
-/* List of LogRooms  */
-
-.rooms-container {
-  border: 1px solid white;
-  margin-bottom: 20px;
-  background-color: white;
-  box-shadow: -10px 10px 30px #888888;
-  font-family: 'Patrick Hand', cursive;
-}
-
-.roomcontainer {
-  list-style: none;
-}
-
-li {
-  display: inline-block;
-}
-
-.header, 
-.log-container {
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-.container {
-  height: 100vh;
-}
-
-
-.log-container {
-  height: 60%;
-  margin-bottom: 2px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 2px;
-}
-
-.entry {
-  margin-top: 2vh;
-  height: 30px  
-}
-
-.submit {
-  text-align: center;
-  height: 25%;
-  background-color: white
-}
-
-
-
-.button-home {
-  height: 25px;
-  margin-top: 8px;
-  width: 18%;
-}
-
-/* log entry */
- .entries {
-  list-style: none;
-  height: 95%;
-  overflow: auto;
-}
-
-time {
-  color: red
-}
-
-.name {
-  color: blue;
-  font-style: italic;
-}
-
-.hidden {
-  display: none;
-}
-
-.heading {
-  text-align: center;
-}
-
-/*Sign Up/In Page*/
-
-.border {
-  box-shadow: -10px 10px 70px #888888;
-  background-color: white;
-}
-
-.signup, .signin {
-  text-align: center;
-
-}
-
-.input {
-  border: none;
-  box-shadow: 1px 1px 15px 2px rgb(242, 242, 242) inset;
-  height: 40px;
-  font-size: 25px;
-  font-family: 'Patrick Hand', cursive;
-}
-
-.paddingtop25px {
-  padding-top: 25px;
-}
-
-.paddingbottom25px {
-  padding-bottom: 30px;
-}
-
-.contained {
-   margin-top: 10vh;
-}
-
-.greenback {
-  background-color: rgb(66, 244, 119);
-}
-
-h1 {
-  font-size: 50px;
-  font-family: 'Homemade Apple', cursive;
-}
-
-button, .button {
-  width: 50%;
-  height: 40px;
-  border-radius: 20px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 25px;
-}
-
-.ent {
-  font-family: 'Patrick Hand', cursive;
-
-}
-
-.signout {
-  width: 35%;
-}
 
 /*font-family: 'Homemade Apple', cursive;
-font-family: 'Patrick Hand', cursive;*/
