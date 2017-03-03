@@ -8,18 +8,19 @@
 
       <link rel="icon" href="logIcon.ico">
       <link rel="stylesheet" type="text/css" href="../../css/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Alice|Crete+Round|Homemade+Apple|Istok+Web|Nobile|Source+Code+Pro|Unica+One" rel="stylesheet">
       <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
   </head>
   <body class="greenback"> 
 
     <div class="container row"> 
       <div class="header row border">
-        <h1 class="col-6"><span class="roomname"></span></h1>
+        <h1 class="nameRoom col-6"><span class="roomname"></span></h1>
         <div class="info roomNum col-4">
           <p class="ent"><strong>room#:</strong>  <span class="roomnumber"></span></p>
         </div>
         <div class="col-12">       
-          <input class="js-home homeb button greenback" type="submit" value="Home">
+          <button class="js-home homeb button" type="submit" >Home<img class="img-home" src="../images/home.png"></button>
         </div>
       </div>
       <div class="log-container col-12 border">
@@ -29,7 +30,7 @@
         <form class="js-submit entry-form col-12">
           <div class="entry-container">
             <input class="entry col-12 input" placeholder="enter log entry here" required
-            ><button class="button-submit greenback" type="submit">Enter</button>
+            ><button class="button-submit greenback" type="submit"></button>
           </div>
         </form>        
       </div>
