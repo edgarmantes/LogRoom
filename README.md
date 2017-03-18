@@ -1,5 +1,6 @@
 Log Room
 =====
+[![Inline docs](http://inch-ci.org/github/shootermantes/LogRoom.svg?branch=master)](http://inch-ci.org/github/shootermantes/LogRoom)
 ### Live Site:
 https://ancient-beyond-11469.herokuapp.com/
 
