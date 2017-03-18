@@ -243,14 +243,13 @@ app.get('/signup', function(req, res){
     res.status(200).sendFile(__dirname + '/public/html/signUp.html')
 });
 
-app.get('/home/:id', function(req, res) {
+app.get('/home/:id', function(req, res) {       // tested endpoint
 	res.status(200).sendFile(__dirname + '/public/html/home.html')
 
 });
 
 
-app.post('/logroom', function(req, res) {
-	console.log('Inside POST logroom')
+app.post('/logroom', function(req, res) {  // tested endpoint
     LogRoom.create({
 	    dateCreated: req.body.dateCreated, 
 	    roomName: req.body.roomName, 
@@ -266,8 +265,8 @@ app.post('/logroom', function(req, res) {
         	{_id: roomObject.hostId}, 
         	{$push:{'logroomIds': roomObject._id}},
         	function(err, object){
-
         		if(err){
+
         			return res.status(500).json({
 	                message: 'Internal Server Error'
 	            	})
@@ -290,6 +289,7 @@ app.get('/logroom/:id/json', function(req, res) {
 })
 
 app.get('/logroom/:id', function(req, res) {
+    console.log(292, 'tested logroom/:id')
 	res.status(200).sendFile(__dirname + '/public/html/logroom.html')
 });
 
