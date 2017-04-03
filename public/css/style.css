@@ -16,6 +16,19 @@ button:hover {
   cursor: pointer;
 }
 
+h1 {
+  font-size: 45px;
+}
+
+h1.main-text {
+  font-weight: normal;
+}
+
+h2.call-header {
+  font-size: 31px;
+  font-family: 'Homemade Apple', cursive;
+}
+
 fieldset {
   border: none;
 }
@@ -51,6 +64,10 @@ fieldset {
 
 
 /**/
+
+  .call-description {
+    text-align: center;
+  }
 
 
 .sub {
@@ -250,10 +267,6 @@ li {
   height: 95vh;
 }
 
-h1 {
-  font-size: 45px;
-  font-family: 'Homemade Apple', cursive;
-}
 
 button, .button {
   width: 50%;
