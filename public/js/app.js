@@ -47,16 +47,14 @@ function getRecentStatusUpdates(callbackFn) {
 	setTimeout(function(){ callbackFn(MOCK_STATUS_UPDATES)}, 1);
 }
 
-// this function stays the same when we connect
-// to real API later
+// 
 function displayStatusUpdates(data) {
     for (index in data.entries) {
 	   $('body').append('<p>' + new Date().toUTCString() + " -- " + data.entries[index].guestName.bold() + " -- " + data.entries[index].message + '</p>');
     }
 }
 
-// this function can stay the same even when we
-// are connecting to real API
+// 
 function getAndDisplayStatusUpdates() {
 	getRecentStatusUpdates(displayStatusUpdates);
 }
