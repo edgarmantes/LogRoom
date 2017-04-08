@@ -33,6 +33,20 @@ fieldset {
   border: none;
 }
 
+input::-webkit-input-placeholder {
+  color: gray;
+}
+
+input::-moz-placeholder { /* Firefox 19+ */
+  color: gray;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: gray;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: gray;
+}
+
 .row {
   max-width: 1000px;
   padding-left: 20px;
@@ -69,11 +83,6 @@ fieldset {
   text-align: center;
 }
 
-.call-in,
-.call-up {
-  border: none;
-
-}
 
 .sub {
   border-radius: 5px;
@@ -189,10 +198,11 @@ li {
   background-image: url(../images/send.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-color: rgba(66,244,119,1.0);
 }
 
 .button-submit:hover {
-  background-color: rgba(66, 244, 119, 1.0);
+  background-color: rgba(66, 244, 119, 0.6);
 }
 
 .time {
@@ -259,11 +269,12 @@ li {
   background-image: url(../images/arrow-right.png);
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(66, 244, 119, 1.0);
 }
 
 .btn-logroom:hover {
   cursor: pointer;
-  background-color: rgba(66, 244, 119, 1.0);
+  background-color: rgba(66, 244, 119, 0.6);
 }
 
 .newLogName {
@@ -278,10 +289,9 @@ li {
 
 
 button, .button {
-  width: 45%;
+  width: 50%;
   height: 40px;
   font-size: 25px;
-  margin-right: 5px;
 }
 
 .logrooms-list {
@@ -439,21 +449,23 @@ button, .button {
     font-size: 20px;
     margin-top: 25px;
     border: none;
-    color: rgb(255,255,255)
+    color: rgb(255,255,255);
+    background-color: rgba(128, 128, 128, 1.0);
   }
 
   .homeb:hover {
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.7);
   }
 
   .signout {
     font-size: 20px;
+    background-color: rgba(128, 128, 128, 1.0);
     color: rgb(255,255,255);
     border: none;
   }
 
   .signout:hover {
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.7);
   }
 
   .signin,
