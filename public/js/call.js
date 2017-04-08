@@ -1,3 +1,5 @@
+
+// Ajax call to sign into account
 var signIn = function(){
 	var signin = {
 		'usernamein': "demo",
